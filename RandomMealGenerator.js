@@ -6,4 +6,5 @@ function randomMeal(meal){
 }
 
 const result = randomMeal(meals);
+// this will output the result
 console.log(result);
