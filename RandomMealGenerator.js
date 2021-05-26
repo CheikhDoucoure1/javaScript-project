@@ -1,10 +1,8 @@
-const meals = ['breakfast','brunch','lunch','dinner'];
 
-function randomMeal(meal){
-    const mealChoice= Math.floor(Math.random() * meal.length);
-    return meal[mealChoice];
+function randomMeal(){
+    const meals = ['breakfast','brunch','lunch','dinner'];
+    const mealChoice= Math.floor(Math.random() * meals.length);
+    return meals[mealChoice];
 }
-
-const result = randomMeal(meals);
-// this will output the result
-console.log(result);
+//this is a more specific function for the random meal generator
+console.log(randomMeal())
