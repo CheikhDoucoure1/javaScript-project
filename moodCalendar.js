@@ -1,26 +1,25 @@
 
+function calendarMood (colorChoice){
+    const defaultColor = 'White';
+    let activeColor = '';
 
-    var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+if (colorChoice === 'Red'){
+    activeColor = 'Red';
+    window.activeColor=activeColor
+    return  activeColor;
+}
 
-    function drawCalendarMonths()
-    {
-        for(var i = 0; i < months.length; i++)
-        {
-            var doc = document.createElement("div");
-            doc.innerHTML = months[i];
-            doc.classList.add("dropdown-item");
+if (colorChoice === 'Green'){
+    activeColor = 'Green';
+    window.activeColor = activeColor;
+    return activeColor;
+ }
 
-            doc.onclick = (function () {
-                var selectedMonth = i;
-                return function ()
-                {
-                    month = selectedMonth;
-                    document.getElementById("curMonth").innerHTML = months[month];
-                    loadCalendarDays();
-                    return month;
-                }
-            })();
+if (colorChoice === defaultColor){
+    window.defaultColor = defaultColor;
+    return defaultColor;
+}
+}
+ 
 
-            document.getElementById("months").appendChild(doc);
-        }
-    }
+

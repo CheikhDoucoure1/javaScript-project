@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      border: 1px solid black;
+      padding: 3px;
+      text-align: center;
+    }
+
+    th {
+      font-weight: bold;
+      background-color:white;
+    }
+
+  </style>
+</head>
+
+<body>
+    <h2>January Mood Calendar</h2>
+    <h4>~ color each day depending on what your mood was / is ~</h4>
+    <p>Select a mood:</p>
+
+    
+    <div class="buttons">
+    <button class = "button" style = "background-color: orange" data-color="Orange">Good</button>
+    <button class="button" style = "background-color: red"  data-color="Red">Sad</button>
+    <button class="button" style = "background-color: green" data-color="Green">Happy</button>
+    </div>
+
+    <button id="reset" type="button">Reset</button>
+
+  <div id="calendar"></div>
+
+
+
+<br /> <br />
+
+<div id="days-report">
+    <div class="color-report ">Red: <span id="red-mood">0</span></div>
+    <div class="color-report">Green: <span id="green-mood">0</span></div>
+    <div class="color-report">Orange: <span id="orange-mood">0</span></div>
+    <div class="color-report">Neutral: <span id="neutral-mood">0</span></div>
+</div>
+
+<script src= "  ./calendarSetup.js  ">  
+</script>
+<script src="./moodCalendar.js">
+</script>
+
+<script>
+    
+
+
+
+    const redMood = document.getElementById('red-mood');
+    const greenMood = document.getElementById('green-mood');
+    const orangeMood = document.getElementById('orange-mood');
+    const neutralMood = document.getElementById('neutral-mood');
+    const cells = document.getElementsByTagName("td");
+
+     neutralMood.textContent = parseInt([...cells].length);
+
+
+    const buttonChoice = document.getElementsByClassName("button");
+    
+     for (let button of buttonChoice) {
+         button.addEventListener('click', btnEvent => {
+             window.activeColor = btnEvent.target.dataset.color;
+         })
+         
+     }
+
+    const Calendar = document.getElementById("calendar");
+    console.log(Calendar);
+    Calendar.addEventListener('click', evt => {
+        console.log(evt.target);
+        evt.target.style['background-color'] = window.activeColor;
+        reportUpdate();
+
+          
+    })
+
+   
+
+    const reportUpdate = function() {
+        switch (window.activeColor.toLowerCase()) {
+            case 'orange':
+                orangeMood.textContent = parseInt(orangeMood.textContent ) + 1;
+                neutralMood.textContent = parseInt(neutralMood.textContent ) - 1;
+                break;
+
+            case 'red':
+                redMood.textContent = parseInt(redMood.textContent ) + 1;
+                neutralMood.textContent = parseInt(neutralMood.textContent ) - 1;
+                break;
+
+            case 'green':
+                greenMood.textContent = parseInt(greenMood.textContent ) + 1;
+                neutralMood.textContent = parseInt(neutralMood.textContent ) - 1;
+                break;
+            default:
+                break;
+        }
+    }
+
+    const reset = document.getElementById("reset");
+    reset.addEventListener('click' , () => {
+        
+        for (let element  of cells) {
+            element.style.backgroundColor = "white";
+        }
+        redMood.textContent = 0;
+        orangeMood.textContent = 0;
+        greenMood.textContent = 0;
+        neutralMood.textContent = parseInt([...cells].length);
+
+
+
+     
+    })
+    
+</script>
+
+</body>
+
+</html>
