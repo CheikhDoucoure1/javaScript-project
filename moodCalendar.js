@@ -1,6 +1,4 @@
 
-const colorChoice =['white', 'red' , 'Green'];
-
 function calendarMood (colorChoice){
     const defaultColor = 'White';
     let activeColor = '';
@@ -17,13 +15,11 @@ if (colorChoice === 'Green'){
     return activeColor;
  }
 
-if (defaultColor){
-    activeColor = defaultColor;
-    window.activeColor = defaultColor;
-    return activeColor;
+if (colorChoice === defaultColor){
+    window.defaultColor = defaultColor;
+    return defaultColor;
 }
 }
- const result = calendarMood('Green');
- console.log(result);
+ 
 
 
